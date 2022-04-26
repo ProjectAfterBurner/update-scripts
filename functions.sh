@@ -1,5 +1,7 @@
 #!/bin/bash
 
+PKGDIR="$HOME/projectafterburner-apt/rpi"
+
 # get the github token for api requests
 if [ ! -f "$HOME/token.sh" ]; then
     error "$HOME/token.sh not found. You need a GitHub API token to use these scripts."
