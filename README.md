@@ -19,7 +19,7 @@ sudo apt install -y ../reprepro_*.deb
 ```
 </details>
 
-### TODO
+### To test
 - [ ] fetch latest release from github api
 - [ ] check if package is already up to date
 - [ ] check if deb file exists on the internet beforehand by using wget
