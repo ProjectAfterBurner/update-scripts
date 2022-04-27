@@ -60,6 +60,9 @@ for script in `ls scripts`; do
     else
         error "no urls provided."
     fi
+    
+    echo ${API} > $DATADIR/${script::-3}.txt
+    
 done
 
 status "Writing packages."
