@@ -30,7 +30,7 @@ for script in `ls scripts`; do
     
     txtfile=`cat $DATADIR/${script::-3}.txt`
 
-    if [ "${txtfile}" == ${API} ]; then
+    if [[ "${txtfile}" == ${API} ]]; then
         continue
     else
         echo "updating ${script::-3}"
