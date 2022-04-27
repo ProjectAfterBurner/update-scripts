@@ -1,0 +1,54 @@
+#!/bin/bash
+
+PKGDIR="$HOME/projectafterburner-apt/rpi/pkgs_incoming" # directory for incoming, unwritten packages.
+
+# get the github token for api requests
+if [ ! -f "$HOME/token.sh" ]; then
+    error "$HOME/token.sh not found. You need a GitHub API token to use these scripts."
+fi
+token="$(cat ~/token.sh)"
+
+DATADIR="$HOME/projectafterburner-apt/rpi/versions"
+
+function error {
+  echo -e "\e[91m$1\e[39m"
+  exit 1
+}
+
+function red {
+  echo -e "\e[91m$1\e[39m"
+}
+
+function warning() { #yellow text
+  echo -e "\e[93m\e[5m◢◣\e[25m WARNING: $1\e[0m" 1>&2
+}
+
+function status() { #cyan text to indicate what is happening
+  
+  #detect if a flag was passed, and if so, pass it on to the echo command
+  if [[ "$1" == '-'* ]] && [ ! -z "$2" ];then
+    echo -e $1 "\e[96m$2\e[0m" 1>&2
+  else
+    echo -e "\e[96m$1\e[0m" 1>&2
+  fi
+}
+
+function green() { #announce the success of an action
+  echo -e "\e[92m$1\e[0m" 1>&2
+}
+
+function get_release() {
+  curl -s --header "Authorization: token $token" "https://api.github.com/repos/$1/releases/latest" | jq -r '.tag_name' | sed s/v//g
+}
+
+function get_prerelease() {
+  curl -s --header "Authorization: token $token" "https://api.github.com/repos/$1/releases" | jq -r 'map(select(.prerelease)) | first | .tag_name' | sed s/v//g
+}
+
+function validate_url(){
+  if command wget -q --spider "$1"; then
+    return 0
+  else
+    return 1
+  fi
+}
