@@ -66,7 +66,6 @@ for script in `ls scripts`; do
     fi
     
     echo ${API} > $DATADIR/${script::-3}.txt
-    
 done
 
 status "Writing packages."
@@ -75,7 +74,7 @@ for new_pkg in `ls pkgs_incoming`; do
     status $new_pkg
     cd $HOME/projectafterburner-apt/rpi || error "failed to enter dir"
     #reprepro_expect, so that the password entry can be automated
-    $HOME/reprepro.exp -- --noguessgpgtty -Vb $HOME/projectafterburner-apt/rpi/ includedeb precise $HOME/projectafterburner-apt/rpi/pkgs_incoming/$new_pkg
+    $HOME/reprepro.exp -- --noguessgpgtty -Vb $HOME/projectafterburner-apt/rpi/ includedeb bullseye $HOME/projectafterburner-apt/rpi/pkgs_incoming/$new_pkg
     if [ $? != 0 ]; then
         red "Import of $new_pkg failed!"
     else
