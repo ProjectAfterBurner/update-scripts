@@ -30,6 +30,10 @@ for script in `ls scripts`; do
     
     txtfile=`cat $DATADIR/${script::-3}.txt`
 
+    if [ ! -f ${txtfile} ]; then
+        echo "JustCreatedThisFile" > ${txtfile}
+    fi
+    
     if [[ "${txtfile}" == ${API} ]]; then
         continue
     else
