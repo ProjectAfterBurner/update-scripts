@@ -5,6 +5,7 @@
 - `pinentry-tty`
 - `gnupg`
 - `wget`
+- `expect`
 
 <details>
 <summary>Compiling Reprepro with Multi-Version Support</summary>
