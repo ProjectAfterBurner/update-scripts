@@ -6,6 +6,7 @@
 - `gnupg`
 - `wget`
 - `expect`
+- `jq`
 
 <details>
 <summary>Compiling Reprepro with Multi-Version Support</summary>
