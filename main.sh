@@ -42,7 +42,7 @@ for script in `ls scripts`; do
         echo "updating ${script::-3}"
     fi
 
-    if [[ ! -z ${allurl+z} ]]; then
+    if [ -n $allurl ]; then
         if wget -q --method=HEAD ${allurl}; then
             wget -q ${allurl} -O ${script::-3}.deb || error "failed to download ${allurl}"
             mv ${script::-3}*.deb $PKGDIR
@@ -51,7 +51,7 @@ for script in `ls scripts`; do
         else
             error "all url does not exist."
         fi
-    elif [[ ! -z ${armhfurl+z} ]]; then
+    elif [ -n $armhfurl ]; then
         if wget -q --method=HEAD ${armhfurl}; then
             wget -q ${armhfurl} -O ${script::-3}.deb || error "failed to download ${armhfurl}"
             mv ${script::-3}*.deb $PKGDIR
@@ -60,7 +60,7 @@ for script in `ls scripts`; do
         else
             error "armhf url does not exist."
         fi
-    elif [[ ! -z ${arm64url+z} ]]; then
+    elif [ -n $arm64url ]; then
         if wget -q --method=HEAD ${arm64url}; then
             wget -q ${arm64url} -O ${script::-3}.deb || error "failed to download ${arm64url}"
             mv ${script::-3}*.deb $PKGDIR
