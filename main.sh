@@ -25,6 +25,9 @@ sudo dpkg --add-architecture armhf
 
 # check/download each package
 for script in `ls scripts`; do
+    unset allurl
+    unset armhfurl
+    unset arm64url
     chmod +x scripts/$script
     source scripts/$script || error "sourcing of $script failed!"
     
