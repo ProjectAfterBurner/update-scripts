@@ -34,7 +34,7 @@ for script in `ls scripts`; do
         echo "JustCreatedThisFile" > ${txtfile}
     fi
     
-    if [[ "${txtfile}" == ${API} ]]; then
+    if [[ ${cat ${txtfile}} == ${API} ]]; then
         continue
     else
         echo "updating ${script::-3}"
