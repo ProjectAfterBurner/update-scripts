@@ -34,7 +34,7 @@ for script in `ls scripts`; do
         echo "JustCreatedThisFile" > ${txtfile}
     fi
     
-    cattxt=`cat ${txtfile`
+    cattxt=`cat ${txtfile}`
     
     if [[ ${cattxt} == ${API} ]]; then
         continue
