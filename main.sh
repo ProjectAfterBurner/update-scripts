@@ -25,6 +25,7 @@ sudo dpkg --add-architecture armhf
 
 # check/download each package
 for script in `ls scripts`; do
+    unset API
     unset allurl
     unset armhfurl
     unset arm64url
@@ -40,6 +41,10 @@ for script in `ls scripts`; do
     cattxt=`cat ${txtfile}`
     
     if [[ ${cattxt} == ${API} ]]; then
+        unset API
+        unset allurl
+        unset armhfurl
+        unset arm64url
         continue
     else
         echo "updating ${script::-3}"
