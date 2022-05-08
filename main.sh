@@ -28,7 +28,7 @@ for script in `ls scripts`; do
     chmod +x scripts/$script
     source scripts/$script || error "sourcing of $script failed!"
     
-    txtfile=`cat $DATADIR/${script::-3}.txt`
+    txtfile="$DATADIR/${script::-3}.txt"
 
     if [ ! -f ${txtfile} ]; then
         echo "JustCreatedThisFile" > ${txtfile}
@@ -65,7 +65,7 @@ for script in `ls scripts`; do
         error "no urls provided."
     fi
     
-    echo ${API} > $DATADIR/${script::-3}.txt
+    echo ${API} > ${txtfile}
 done
 
 status "Writing packages."
