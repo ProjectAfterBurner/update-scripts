@@ -56,7 +56,7 @@ for script in `ls scripts`; do
         fi
     elif [[ ! -z ${arm64url+z} ]]; then
         if wget -q --method=HEAD ${arm64url}; then
-            wget -q ${arm64url} || error "failed to download ${arm64url}"
+            wget -q ${arm64url} -O ${script::-3}.deb || error "failed to download ${arm64url}"
             mv ${script::-3}*.deb $PKGDIR
             rm -rf ${script::-3}*.deb
         else
