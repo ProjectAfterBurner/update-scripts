@@ -50,7 +50,7 @@ for script in `ls scripts`; do
         echo "updating ${script::-3}"
     fi
 
-    if [ -z $allurl ]; then
+    if [ ! -z $allurl ]; then
         echo "allurl"
         if wget -q --method=HEAD ${allurl}; then
             wget ${allurl} -O ${script::-3}.deb || error "failed to download ${allurl}"
@@ -60,7 +60,7 @@ for script in `ls scripts`; do
         else
             error "all url does not exist."
         fi
-    elif [ -z $armhfurl ]; then
+    elif [ ! -z $armhfurl ]; then
         echo "armhfurl"
         if wget -q --method=HEAD ${armhfurl}; then
             wget ${armhfurl} -O ${script::-3}.deb || error "failed to download ${armhfurl}"
@@ -70,7 +70,7 @@ for script in `ls scripts`; do
         else
             error "armhf url does not exist."
         fi
-    elif [ -z $arm64url ]; then
+    elif [ ! -z $arm64url ]; then
         echo "arm64url"
         if wget -q --method=HEAD ${arm64url}; then
             wget ${arm64url} -O ${script::-3}.deb || error "failed to download ${arm64url}"
