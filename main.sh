@@ -43,8 +43,9 @@ for script in `ls scripts`; do
     fi
 
     if [ -n $allurl ]; then
+        echo "allurl"
         if wget -q --method=HEAD ${allurl}; then
-            wget -q ${allurl} -O ${script::-3}.deb || error "failed to download ${allurl}"
+            wget ${allurl} -O ${script::-3}.deb || error "failed to download ${allurl}"
             mv ${script::-3}*.deb $PKGDIR
             rm -rf ${script::-3}*.deb
             unset allurl
@@ -52,8 +53,9 @@ for script in `ls scripts`; do
             error "all url does not exist."
         fi
     elif [ -n $armhfurl ]; then
+        echo "armhfurl"
         if wget -q --method=HEAD ${armhfurl}; then
-            wget -q ${armhfurl} -O ${script::-3}.deb || error "failed to download ${armhfurl}"
+            wget ${armhfurl} -O ${script::-3}.deb || error "failed to download ${armhfurl}"
             mv ${script::-3}*.deb $PKGDIR
             rm -rf ${script::-3}*.deb
             unset armhfurl
@@ -61,8 +63,9 @@ for script in `ls scripts`; do
             error "armhf url does not exist."
         fi
     elif [ -n $arm64url ]; then
+        echo "arm64url"
         if wget -q --method=HEAD ${arm64url}; then
-            wget -q ${arm64url} -O ${script::-3}.deb || error "failed to download ${arm64url}"
+            wget ${arm64url} -O ${script::-3}.deb || error "failed to download ${arm64url}"
             mv ${script::-3}*.deb $PKGDIR
             rm -rf ${script::-3}*.deb
             unset arm64url
