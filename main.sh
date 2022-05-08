@@ -12,7 +12,7 @@ if [ "$localhash" != "$latesthash" ] && [ ! -z "$latesthash" ] && [ ! -z "$local
     git reset --hard
     git pull https://github.com/ProjectAfterBurner/update-scripts.git HEAD || error 'Unable to update, please check your internet connection'
 else
-    echo "Up to date."
+    echo "Script is up to date."
 fi
 
 
