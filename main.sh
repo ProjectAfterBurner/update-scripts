@@ -81,7 +81,7 @@ for new_pkg in `ls pkgs_incoming`; do
     else
         rm -rf pkgs_incoming/$new_pkg
     fi
-    cd $HOME/projectafterburner-rpi 
+    cd $HOME/projectafterburner-apt
     git add . || error "Failed to run git add"
     git commit -m "Updated $new_pkg" || error "Failed to run git commit $new_pkg"
     git push origin main || error "Failed to run git push origin main!"
