@@ -44,15 +44,17 @@ for script in `ls scripts`; do
 
     if [[ ! -z ${allurl+z} ]]; then
         if wget -q --method=HEAD ${allurl}; then
-            wget -q ${allurl} || error "failed to download ${allurl}"
+            wget -q ${allurl} -O ${script::-3}.deb || error "failed to download ${allurl}"
             mv ${script::-3}*.deb $PKGDIR
+            rm -rf ${script::-3}*.deb
         else
             error "all url does not exist."
         fi
     elif [[ ! -z ${armhfurl+z} ]]; then
         if wget -q --method=HEAD ${armhfurl}; then
-            wget -q ${armhfurl} || error "failed to download ${armhfurl}"
+            wget -q ${armhfurl} -O ${script::-3}.deb || error "failed to download ${armhfurl}"
             mv ${script::-3}*.deb $PKGDIR
+            rm -rf ${script::-3}*.deb
         else
             error "armhf url does not exist."
         fi
