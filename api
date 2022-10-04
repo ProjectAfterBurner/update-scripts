@@ -2,7 +2,7 @@
 
 PKGDIR="$HOME/projectafterburner-apt/rpi/pkgs_incoming" # directory for incoming, unwritten packages.
 
-function error {
+function error { # exit in red text if something goes wrong
   echo -e "\e[91m$1\e[39m"
   exit 1
 }
